@@ -29,7 +29,7 @@ module.exports = {
         nav: [
             {text: '首页', link: '/'},
             {
-                text: 'Java', link: '/categories/?category=Java', items: [
+                text: 'Java', items: [
                     {text: 'JavaSE', link: '/pages/kas755c4/'},
                     // { text: 'JavaWEB', link: '/pages/a2f161/' },
                     // { text: 'Java新特性', link: '/pages/793dcb/' },
@@ -52,7 +52,7 @@ module.exports = {
                 ]
             },
             {
-                text: 'Spring生态', link: '/categories/?category=Spring生态', items: [
+                text: 'Spring生态', items: [
                     //     { text: '主题配置', link: '/pages/a20ce8/' },
                     //     { text: '首页配置', link: '/pages/f14bdb/' },
                     //     { text: 'front matter配置', link: '/pages/3216b0/' },
@@ -63,21 +63,21 @@ module.exports = {
                 ]
             },
             {
-                text: '数据库', link: '/categories/?category=数据库', items: [
+                text: '数据库', items: [
                     {
                         text: 'NoSQL', items: [
                             {text: 'Redis', link: '/pages/bp3ikv4g/'},
                     ]},
                 ]
             }, {
-                text: '中间件', link: '/categories/?category=中间件', items: [
+                text: '中间件', items: [
                     {
                         text: '消息中间件', items: [
                             {text: 'RabbitMQ', link: '/pages/vd45cpcf/'},
                     ]},
                 ]
             }, {
-                text: '运维', link: '/categories/?category=运维', items: [
+                text: '运维', items: [
                     {text: 'Linux', link: '/pages/e938xib2/'},
                 ]
             },
