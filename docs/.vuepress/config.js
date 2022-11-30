@@ -52,7 +52,7 @@ module.exports = {
                 ]
             },
             {
-                text: 'Spring生态', items: [
+                text: 'Java框架', items: [
                          //{ text: 'Spring'/*, link: '/pages/a20ce8/'*/ },
                          //{ text: 'SpringMVC'/*, link: '/pages/f14bdb/'*/ },
                          //{ text: 'SpringBoot'/*, link: '/pages/3216b0/'*/ },
