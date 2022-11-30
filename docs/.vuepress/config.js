@@ -53,10 +53,10 @@ module.exports = {
             },
             {
                 text: 'Spring生态', items: [
-                    //     { text: '主题配置', link: '/pages/a20ce8/' },
-                    //     { text: '首页配置', link: '/pages/f14bdb/' },
-                    //     { text: 'front matter配置', link: '/pages/3216b0/' },
-                    //     { text: '目录页配置', link: '/pages/54651a/' },
+                         //{ text: 'Spring'/*, link: '/pages/a20ce8/'*/ },
+                         //{ text: 'SpringMVC'/*, link: '/pages/f14bdb/'*/ },
+                         //{ text: 'SpringBoot'/*, link: '/pages/3216b0/'*/ },
+                         { text: 'SpringCloud', link: '/pages/24j4ehty/' },
                     //     { text: '添加摘要', link: '/pages/1cc523/' },
                     //     { text: '修改主题颜色和样式', link: '/pages/f51918/' },
                     //     { text: '评论栏', link: '/pages/ce175c/' },
@@ -79,6 +79,10 @@ module.exports = {
             }, {
                 text: '运维', items: [
                     {text: 'Linux', link: '/pages/e938xib2/'},
+                ]
+            },{
+                text: '工具', items: [
+                    {text: 'Git', link: '/pages/eb9ks77i/'},
                 ]
             },
             // { text: '资源', link: '/pages/db78e2/' },
