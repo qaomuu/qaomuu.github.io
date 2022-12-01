@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redis配置文件 | 乔木先生</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="Java后端技术博客,专注Java后端学习与总结。Java,Spring,SpringBoot,SpringMVC,SpringCloud,Mybatis,Linux,css3,html5,Maven,git,github等技术文章。">
+    <meta name="keywords" content="Java后端技术博客,专注Java后端学习与总结。Java,Spring,SpringBoot,SpringMVC,SpringCloud,Mybatis,Linux,css3,html5,Maven,git,github等技术文章。">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.a29a3543.css" as="style"><link rel="preload" href="/assets/js/app.ce0d757e.js" as="script"><link rel="preload" href="/assets/js/2.06b51e28.js" as="script"><link rel="preload" href="/assets/js/11.0710d907.js" as="script"><link rel="prefetch" href="/assets/js/10.25ab3c87.js"><link rel="prefetch" href="/assets/js/12.b69f61e1.js"><link rel="prefetch" href="/assets/js/13.7c680a8f.js"><link rel="prefetch" href="/assets/js/14.c2a530ec.js"><link rel="prefetch" href="/assets/js/15.0344ac89.js"><link rel="prefetch" href="/assets/js/16.8ba3e333.js"><link rel="prefetch" href="/assets/js/17.d5aa2799.js"><link rel="prefetch" href="/assets/js/18.220bdb83.js"><link rel="prefetch" href="/assets/js/19.67fc625a.js"><link rel="prefetch" href="/assets/js/20.8a296438.js"><link rel="prefetch" href="/assets/js/21.bebe2d14.js"><link rel="prefetch" href="/assets/js/22.a2f38cf1.js"><link rel="prefetch" href="/assets/js/23.584f4a98.js"><link rel="prefetch" href="/assets/js/24.b4f54e0d.js"><link rel="prefetch" href="/assets/js/25.4e296918.js"><link rel="prefetch" href="/assets/js/26.e9f8a341.js"><link rel="prefetch" href="/assets/js/27.d1e12903.js"><link rel="prefetch" href="/assets/js/28.aad73944.js"><link rel="prefetch" href="/assets/js/29.1f69ecb2.js"><link rel="prefetch" href="/assets/js/3.04a7b8c9.js"><link rel="prefetch" href="/assets/js/30.31228ad4.js"><link rel="prefetch" href="/assets/js/31.876161e0.js"><link rel="prefetch" href="/assets/js/32.00970883.js"><link rel="prefetch" href="/assets/js/33.d6286171.js"><link rel="prefetch" href="/assets/js/34.6f7f8dea.js"><link rel="prefetch" href="/assets/js/35.61b61fb3.js"><link rel="prefetch" href="/assets/js/36.ff818b3d.js"><link rel="prefetch" href="/assets/js/37.3b4a7cce.js"><link rel="prefetch" href="/assets/js/38.c3e4cbf3.js"><link rel="prefetch" href="/assets/js/4.23b49261.js"><link rel="prefetch" href="/assets/js/5.cf7ce6d9.js"><link rel="prefetch" href="/assets/js/6.de48cd74.js"><link rel="prefetch" href="/assets/js/7.5fd9e1bc.js"><link rel="prefetch" href="/assets/js/8.31885ab6.js"><link rel="prefetch" href="/assets/js/9.88734d8e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a29a3543.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="乔木先生" class="logo"> <span class="site-name can-hide">乔木先生</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/kas755c4/" class="nav-link">JavaSE</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><!----> <span class="title" style="display:;">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/24j4ehty/" class="nav-link">SpringCloud</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>NoSQL</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/bp3ikv4g/" class="nav-link">Redis</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>消息中间件</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/vd45cpcf/" class="nav-link">RabbitMQ</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/e938xib2/" class="nav-link">Linux</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><!----> <span class="title" style="display:;">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/eb9ks77i/" class="nav-link">Git</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/qaomuu" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><!----> <span class="title" style="display:;">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/kas755c4/" class="nav-link">JavaSE</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><!----> <span class="title" style="display:;">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/24j4ehty/" class="nav-link">SpringCloud</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><!----> <span class="title" style="display:;">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>NoSQL</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/bp3ikv4g/" class="nav-link">Redis</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><!----> <span class="title" style="display:;">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>消息中间件</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/vd45cpcf/" class="nav-link">RabbitMQ</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="运维" class="dropdown-title"><!----> <span class="title" style="display:;">运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/e938xib2/" class="nav-link">Linux</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><!----> <span class="title" style="display:;">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/eb9ks77i/" class="nav-link">Git</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/qaomuu" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Redis</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/bp3ikv4g/" class="sidebar-link">Redis概述&amp;安装</a></li><li><a href="/pages/0oaka83c/" class="sidebar-link">Redis常用命令&amp;数据类型</a></li><li><a href="/pages/57aemd8k/" aria-current="page" class="active sidebar-link">Redis配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#units-单位" class="sidebar-link">Units 单位</a></li><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#includes-包含" class="sidebar-link">INCLUDES 包含</a></li><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#network-网络相关配置" class="sidebar-link">NETWORK 网络相关配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#bind" class="sidebar-link">bind</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#protected-mode" class="sidebar-link">protected-mode</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#port" class="sidebar-link">port</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#tcp-backlog" class="sidebar-link">tcp-backlog</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#timeout" class="sidebar-link">timeout</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#tcp-keepalive" class="sidebar-link">tcp-keepalive</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#general-通用" class="sidebar-link">GENERAL 通用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#daemonize" class="sidebar-link">daemonize</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#pidfile" class="sidebar-link">pidfile</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#loglevel" class="sidebar-link">loglevel</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#logfile" class="sidebar-link">logfile</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#databases" class="sidebar-link">databases</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#security-安全" class="sidebar-link">SECURITY 安全</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#设置密码" class="sidebar-link">设置密码</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/57aemd8k/#limits-限制" class="sidebar-link">LIMITS 限制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#maxclients" class="sidebar-link">maxclients</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#maxmemory" class="sidebar-link">maxmemory</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#maxmemory-policy" class="sidebar-link">maxmemory-policy</a></li><li class="sidebar-sub-header level3"><a href="/pages/57aemd8k/#maxmemory-samples" class="sidebar-link">maxmemory-samples</a></li></ul></li></ul></li><li><a href="/pages/3a16c7g6/" class="sidebar-link">Redis发布和订阅</a></li><li><a href="/pages/wuy0993s/" class="sidebar-link">Redis新数据类型</a></li><li><a href="/pages/a7v81744/" class="sidebar-link">Redis Java客户端Jedis</a></li><li><a href="/pages/jsf92i5m/" class="sidebar-link">SpringBoot整合Redis</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/categories/?category=%E6%95%B0%E6%8D%AE%E5%BA%93" title="分类" data-v-06225672>数据库</a></li><li data-v-06225672><a href="/categories/?category=Redis" title="分类" data-v-06225672>Redis</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="javascript:;" data-v-06225672>乔木先生</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-12-10</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">Redis配置文件<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="units-单位"><a href="#units-单位" class="header-anchor">#</a> Units 单位</h2> <p>配置大小单位，开头定义了一些基本的度量单位，只支持bytes，不支持bit，大小写不敏感。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Redis configuration file example.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that in order to read the configuration file, Redis must be</span>
+<span class="token comment"># started with the file path as first argument:</span>
+<span class="token comment">#</span>
+<span class="token comment"># ./redis-server /path/to/redis.conf</span>
+
+<span class="token comment"># Note on units: when memory size is needed, it is possible to specify</span>
+<span class="token comment"># it in the usual form of 1k 5GB 4M and so forth:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1k =&gt; 1000 bytes</span>
+<span class="token comment"># 1kb =&gt; 1024 bytes</span>
+<span class="token comment"># 1m =&gt; 1000000 bytes</span>
+<span class="token comment"># 1mb =&gt; 1024*1024 bytes</span>
+<span class="token comment"># 1g =&gt; 1000000000 bytes</span>
+<span class="token comment"># 1gb =&gt; 1024*1024*1024 bytes</span>
+<span class="token comment">#</span>
+<span class="token comment"># units are case insensitive so 1GB 1Gb 1gB are all the same.</span>
+</code></pre></div><h2 id="includes-包含"><a href="#includes-包含" class="header-anchor">#</a> INCLUDES 包含</h2> <p>类似jsp中的include，多实例的情况可以把公用的配置文件提取出来</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">################################## INCLUDES ###################################</span>
+
+<span class="token comment"># Include one or more other config files here.  This is useful if you</span>
+<span class="token comment"># have a standard template that goes to all Redis servers but also need</span>
+<span class="token comment"># to customize a few per-server settings.  Include files can include</span>
+<span class="token comment"># other files, so use this wisely.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that option &quot;include&quot; won't be rewritten by command &quot;CONFIG REWRITE&quot;</span>
+<span class="token comment"># from admin or Redis Sentinel. Since Redis always uses the last processed</span>
+<span class="token comment"># line as value of a configuration directive, you'd better put includes</span>
+<span class="token comment"># at the beginning of this file to avoid overwriting config change at runtime.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If instead you are interested in using includes to override configuration</span>
+<span class="token comment"># options, it is better to use include as the last line.</span>
+<span class="token comment">#</span>
+<span class="token comment"># include /path/to/local.conf</span>
+<span class="token comment"># include /path/to/other.conf</span>
+</code></pre></div><h2 id="network-网络相关配置"><a href="#network-网络相关配置" class="header-anchor">#</a> NETWORK 网络相关配置</h2> <h3 id="bind"><a href="#bind" class="header-anchor">#</a> bind</h3> <ul><li>默认情况 <code>bind=127.0.0.1</code> 只能接受本机的访问请求</li> <li>不写的情况下，无限制接受任何ip地址的访问</li></ul> <p>生产环境要写应用服务器的地址，服务器是需要远程访问的。</p> <blockquote><p>如果开启了 <code>protected-mode</code>，那么在没有设定 <code>bind ip</code> 且没有设密码的情况下，Redis只允许接受本机的响应</p></blockquote> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">################################## NETWORK #####################################</span>
+
+<span class="token comment"># By default, if no &quot;bind&quot; configuration directive is specified, Redis listens</span>
+<span class="token comment"># for connections from all available network interfaces on the host machine.</span>
+<span class="token comment"># It is possible to listen to just one or multiple selected interfaces using</span>
+<span class="token comment"># the &quot;bind&quot; configuration directive, followed by one or more IP addresses.</span>
+<span class="token comment"># Each address can be prefixed by &quot;-&quot;, which means that redis will not fail to</span>
+<span class="token comment"># start if the address is not available. Being not available only refers to</span>
+<span class="token comment"># addresses that does not correspond to any network interfece. Addresses that</span>
+<span class="token comment"># are already in use will always fail, and unsupported protocols will always BE</span>
+<span class="token comment"># silently skipped.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Examples:</span>
+<span class="token comment">#</span>
+<span class="token comment"># bind 192.168.1.100 10.0.0.1     # listens on two specific IPv4 addresses</span>
+<span class="token comment"># bind 127.0.0.1 ::1              # listens on loopback IPv4 and IPv6</span>
+<span class="token comment"># bind * -::*                     # like the default, all available interfaces</span>
+<span class="token comment">#</span>
+<span class="token comment"># ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the</span>
+<span class="token comment"># internet, binding to all the interfaces is dangerous and will expose the</span>
+<span class="token comment"># instance to everybody on the internet. So by default we uncomment the</span>
+<span class="token comment"># following bind directive, that will force Redis to listen only on the</span>
+<span class="token comment"># IPv4 and IPv6 (if available) loopback interface addresses (this means Redis</span>
+<span class="token comment"># will only be able to accept client connections from the same host that it is</span>
+<span class="token comment"># running on).</span>
+<span class="token comment">#</span>
+<span class="token comment"># IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span>
+<span class="token comment"># JUST COMMENT OUT THE FOLLOWING LINE.</span>
+<span class="token comment"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="token builtin class-name">bind</span> <span class="token number">127.0</span>.0.1 -::1
+</code></pre></div><p><img src="https://file.qaomuu.com/blog/MBvoxh0jnNKJW22kuVLeokXajXHVtD8b4AdeCt5H_O8.png" alt="image"></p> <h3 id="protected-mode"><a href="#protected-mode" class="header-anchor">#</a> protected-mode</h3> <p>本机访问保护模式，设置no</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Protected mode is a layer of security protection, in order to avoid that</span>
+<span class="token comment"># Redis instances left open on the internet are accessed and exploited.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When protected mode is on and if:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) The server is not binding explicitly to a set of addresses using the</span>
+<span class="token comment">#    &quot;bind&quot; directive.</span>
+<span class="token comment"># 2) No password is configured.</span>
+<span class="token comment">#	</span>
+<span class="token comment"># The server only accepts connections from clients connecting from the</span>
+<span class="token comment"># IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain</span>
+<span class="token comment"># sockets.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default protected mode is enabled. You should disable it only if</span>
+<span class="token comment"># you are sure you want clients from other hosts to connect to Redis</span>
+<span class="token comment"># even if no authentication is configured, nor a specific set of interfaces</span>
+<span class="token comment"># are explicitly listed using the &quot;bind&quot; directive.</span>
+protected-mode no
+</code></pre></div><h3 id="port"><a href="#port" class="header-anchor">#</a> port</h3> <p>端口号，默认为6379</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Accept connections on the specified port, default is 6379 (IANA #815344).</span>
+<span class="token comment"># If port 0 is specified Redis will not listen on a TCP socket.</span>
+port <span class="token number">6379</span>
+</code></pre></div><h3 id="tcp-backlog"><a href="#tcp-backlog" class="header-anchor">#</a> tcp-backlog</h3> <p>设置tcp的backlog，backlog其实是一个连接队列，backlog队列总和=未完成三次握手队列 + 已经完成三次握手队列。</p> <p><strong>在高并发环境下需要一个高backlog值来避免慢客户端连接问题。</strong></p> <blockquote><p>Linux内核会将这个值减小到 <code>/proc/sys/net/core/somaxconn</code> 的值（128），所以需要确认增大 <code>/proc/sys/net/core/somaxconn</code> 和 <code>/proc/sys/net/ipv4/tcp_max_syn_backlog</code> （128）两个值来达到想要的效果。</p></blockquote> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># TCP listen() backlog.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In high requests-per-second environments you need a high backlog in order</span>
+<span class="token comment"># to avoid slow clients connection issues. Note that the Linux kernel</span>
+<span class="token comment"># will silently truncate it to the value of /proc/sys/net/core/somaxconn so</span>
+<span class="token comment"># make sure to raise both the value of somaxconn and tcp_max_syn_backlog</span>
+<span class="token comment"># in order to get the desired effect.</span>
+tcp-backlog <span class="token number">511</span>
+</code></pre></div><h3 id="timeout"><a href="#timeout" class="header-anchor">#</a> timeout</h3> <p>一个空闲的客户端维持多少秒会关闭，0表示关闭该功能。即<strong>永不关闭</strong>。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Close the connection after a client is idle for N seconds (0 to disable)</span>
+<span class="token function">timeout</span> <span class="token number">0</span>
+</code></pre></div><h3 id="tcp-keepalive"><a href="#tcp-keepalive" class="header-anchor">#</a> tcp-keepalive</h3> <p>对访问客户端的一种心跳检测，每个n秒检测一次，单位为秒。</p> <p>如果设置为0，则不会进行Keepalive检测。</p> <p>建议设置成60。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># TCP keepalive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If non-zero, use SO_KEEPALIVE to send TCP ACKs to clients in absence</span>
+<span class="token comment"># of communication. This is useful for two reasons:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) Detect dead peers.</span>
+<span class="token comment"># 2) Force network equipment in the middle to consider the connection to be</span>
+<span class="token comment">#    alive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># On Linux, the specified value (in seconds) is the period used to send ACKs.</span>
+<span class="token comment"># Note that to close the connection the double of the time is needed.</span>
+<span class="token comment"># On other kernels the period depends on the kernel configuration.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A reasonable value for this option is 300 seconds, which is the new</span>
+<span class="token comment"># Redis default starting with Redis 3.2.1.</span>
+tcp-keepalive <span class="token number">300</span>
+</code></pre></div><h2 id="general-通用"><a href="#general-通用" class="header-anchor">#</a> GENERAL 通用</h2> <h3 id="daemonize"><a href="#daemonize" class="header-anchor">#</a> daemonize</h3> <p>是否为后台进程，设置为 yes</p> <p>守护进程，后台启动</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># By default Redis does not run as a daemon. Use 'yes' if you need it.</span>
+<span class="token comment"># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.</span>
+<span class="token comment"># When Redis is supervised by upstart or systemd, this parameter has no impact.</span>
+daemonize <span class="token function">yes</span>
+</code></pre></div><h3 id="pidfile"><a href="#pidfile" class="header-anchor">#</a> pidfile</h3> <p>存放pid文件的位置，每个实例会产生一个不同的pid文件</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># If a pid file is specified, Redis writes it where specified at startup</span>
+<span class="token comment"># and removes it at exit.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When the server runs non daemonized, no pid file is created if none is</span>
+<span class="token comment"># specified in the configuration. When the server is daemonized, the pid file</span>
+<span class="token comment"># is used even if not specified, defaulting to &quot;/var/run/redis.pid&quot;.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Creating a pid file is best effort: if Redis is not able to create it</span>
+<span class="token comment"># nothing bad happens, the server will start and run normally.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that on modern Linux systems &quot;/run/redis.pid&quot; is more conforming</span>
+<span class="token comment"># and should be used instead.</span>
+pidfile /var/run/redis_6379.pid
+</code></pre></div><h3 id="loglevel"><a href="#loglevel" class="header-anchor">#</a> loglevel</h3> <p>指定日志记录级别，Redis总共支持四个级别： <code>debug</code> 、 <code>verbose</code> 、 <code>notice</code> 、 <code>warning</code> ，默认为 <strong>notice</strong></p> <p>四个级别根据使用阶段来选择，生产环境选择 <code>notice</code> 或者 <code>warning</code></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Specify the server verbosity level.</span>
+<span class="token comment"># This can be one of:</span>
+<span class="token comment"># debug (a lot of information, useful for development/testing)</span>
+<span class="token comment"># verbose (many rarely useful info, but not a mess like the debug level)</span>
+<span class="token comment"># notice (moderately verbose, what you want in production probably)</span>
+<span class="token comment"># warning (only very important / critical messages are logged)</span>
+loglevel notice
+</code></pre></div><h3 id="logfile"><a href="#logfile" class="header-anchor">#</a> logfile</h3> <p>日志文件名称</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Specify the log file name. Also the empty string can be used to force</span>
+<span class="token comment"># Redis to log on the standard output. Note that if you use standard</span>
+<span class="token comment"># output for logging but daemonize, logs will be sent to /dev/null</span>
+logfile <span class="token string">&quot;&quot;</span>
+</code></pre></div><h3 id="databases"><a href="#databases" class="header-anchor">#</a> databases</h3> <p>设定库的数量 默认16，默认数据库为0，可以使用 <code>SELECT &lt;dbid&gt;</code> 命令在连接上指定数据库id</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Set the number of databases. The default database is DB 0, you can select</span>
+<span class="token comment"># a different one on a per-connection basis using SELECT &lt;dbid&gt; where</span>
+<span class="token comment"># dbid is a number between 0 and 'databases'-1</span>
+databases <span class="token number">16</span>
+</code></pre></div><h2 id="security-安全"><a href="#security-安全" class="header-anchor">#</a> SECURITY 安全</h2> <h3 id="设置密码"><a href="#设置密码" class="header-anchor">#</a> 设置密码</h3> <p>访问密码的查看、设置和取消</p> <p>在命令中设置密码，只是临时的。重启redis服务器，密码就还原了。</p> <p>永久设置，需要再配置文件中进行设置。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># IMPORTANT NOTE: starting with Redis 6 &quot;requirepass&quot; is just a compatibility</span>
+<span class="token comment"># layer on top of the new ACL system. The option effect will be just setting</span>
+<span class="token comment"># the password for the default user. Clients will still authenticate using</span>
+<span class="token comment"># AUTH &lt;password&gt; as usually, or more explicitly with AUTH default &lt;password&gt;</span>
+<span class="token comment"># if they follow the new protocol: both will work.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The requirepass is not compatable with aclfile option and the ACL LOAD</span>
+<span class="token comment"># command, these will cause requirepass to be ignored.</span>
+<span class="token comment">#</span>
+<span class="token comment"># requirepass foobared</span>
+</code></pre></div><p>临时设置密码：</p> <div class="language-Plain Text extra-class"><pre class="language-plain"><code>127.0.0.1:6379&gt; config get requirepass
+1) &quot;requirepass&quot;
+2) &quot;&quot;
+127.0.0.1:6379&gt; config set requirepass &quot;123456&quot;
+OK
+127.0.0.1:6379&gt; config get requirepass
+1) &quot;requirepass&quot;
+2) &quot;123456&quot;
+</code></pre></div><h2 id="limits-限制"><a href="#limits-限制" class="header-anchor">#</a> LIMITS 限制</h2> <h3 id="maxclients"><a href="#maxclients" class="header-anchor">#</a> maxclients</h3> <p>设置redis同时可以与多少个客户端进行连接，默认情况下为10000个客户端。</p> <p>如果达到了此限制，redis则会拒绝新的连接请求，并且向这些连接请求方发出“<code>max number of clients reached</code>”以作回应。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Set the max number of connected clients at the same time. By default</span>
+<span class="token comment"># this limit is set to 10000 clients, however if the Redis server is not</span>
+<span class="token comment"># able to configure the process file limit to allow for the specified limit</span>
+<span class="token comment"># the max number of allowed clients is set to the current file limit</span>
+<span class="token comment"># minus 32 (as Redis reserves a few file descriptors for internal uses).</span>
+<span class="token comment">#</span>
+<span class="token comment"># Once the limit is reached Redis will close all the new connections sending</span>
+<span class="token comment"># an error 'max number of clients reached'.</span>
+<span class="token comment">#</span>
+<span class="token comment"># IMPORTANT: When Redis Cluster is used, the max number of connections is also</span>
+<span class="token comment"># shared with the cluster bus: every node in the cluster will use two</span>
+<span class="token comment"># connections, one incoming and another outgoing. It is important to size the</span>
+<span class="token comment"># limit accordingly in case of very large clusters.</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxclients 10000</span>
+</code></pre></div><h3 id="maxmemory"><a href="#maxmemory" class="header-anchor">#</a> maxmemory</h3> <p>设置redis可以使用的内存量，一旦到达内存使用上限，redis将会试图移除内部数据，移除规则可以通过 <code>maxmemory-policy</code> 来指定。</p> <p><strong>建议设置，否则可能内存占满，造成服务器宕机。</strong></p> <p>如果redis无法根据移除规则来移除内存中的数据，或者设置了“不允许移除”，那么redis则会针对那些需要申请内存的指令返回错误信息，比如SET、LPUSH等。</p> <p>但是对于无内存申请的指令，仍然会正常响应，比如GET等。如果redis是主redis（说明redis有从redis），那么在设置内存使用上限时，需要在系统中留出一些内存空间给同步队列缓存，只有在设置的是“不移除”的情况下，才不用考虑这个因素。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Set a memory usage limit to the specified amount of bytes.</span>
+<span class="token comment"># When the memory limit is reached Redis will try to remove keys</span>
+<span class="token comment"># according to the eviction policy selected (see maxmemory-policy).</span>
+<span class="token comment">#</span>
+<span class="token comment"># If Redis can't remove keys according to the policy, or if the policy is</span>
+<span class="token comment"># set to 'noeviction', Redis will start to reply with errors to commands</span>
+<span class="token comment"># that would use more memory, like SET, LPUSH, and so on, and will continue</span>
+<span class="token comment"># to reply to read-only commands like GET.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This option is usually useful when using Redis as an LRU or LFU cache, or to</span>
+<span class="token comment"># set a hard memory limit for an instance (using the 'noeviction' policy).</span>
+<span class="token comment">#</span>
+<span class="token comment"># WARNING: If you have replicas attached to an instance with maxmemory on,</span>
+<span class="token comment"># the size of the output buffers needed to feed the replicas are subtracted</span>
+<span class="token comment"># from the used memory count, so that network problems / resyncs will</span>
+<span class="token comment"># not trigger a loop where keys are evicted, and in turn the output</span>
+<span class="token comment"># buffer of replicas is full with DELs of keys evicted triggering the deletion</span>
+<span class="token comment"># of more keys, and so forth until the database is completely emptied.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In short... if you have replicas attached it is suggested that you set a lower</span>
+<span class="token comment"># limit for maxmemory so that there is some free RAM on the system for replica</span>
+<span class="token comment"># output buffers (but this is not needed if the policy is 'noeviction').</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory &lt;bytes&gt;</span>
+</code></pre></div><h3 id="maxmemory-policy"><a href="#maxmemory-policy" class="header-anchor">#</a> maxmemory-policy</h3> <ul><li><code>volatile-lru</code> ：使用LRU算法移除key，只对设置了过期时间的键；（最近最少使用）</li> <li><code>allkeys-lru</code> ：在所有集合key中，使用LRU算法移除key</li> <li><code>volatile-random</code> ：在过期集合中移除随机的key，只对设置了过期时间的键</li> <li><code>allkeys-random</code> ：在所有集合key中，移除随机的key</li> <li><code>volatile-ttl</code> ：移除那些TTL值最小的key，即那些最近要过期的key</li> <li><code>noeviction</code> ：不进行移除，针对写操作，只是返回错误信息</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># MAXMEMORY POLICY: how Redis will select what to remove when maxmemory</span>
+<span class="token comment"># is reached. You can select one from the following behaviors:</span>
+<span class="token comment">#</span>
+<span class="token comment"># volatile-lru -&gt; Evict using approximated LRU, only keys with an expire set.</span>
+<span class="token comment"># allkeys-lru -&gt; Evict any key using approximated LRU.</span>
+<span class="token comment"># volatile-lfu -&gt; Evict using approximated LFU, only keys with an expire set.</span>
+<span class="token comment"># allkeys-lfu -&gt; Evict any key using approximated LFU.</span>
+<span class="token comment"># volatile-random -&gt; Remove a random key having an expire set.</span>
+<span class="token comment"># allkeys-random -&gt; Remove a random key, any key.</span>
+<span class="token comment"># volatile-ttl -&gt; Remove the key with the nearest expire time (minor TTL)</span>
+<span class="token comment"># noeviction -&gt; Don't evict anything, just return an error on write operations.</span>
+<span class="token comment">#</span>
+<span class="token comment"># LRU means Least Recently Used</span>
+<span class="token comment"># LFU means Least Frequently Used</span>
+<span class="token comment">#</span>
+<span class="token comment"># Both LRU, LFU and volatile-ttl are implemented using approximated</span>
+<span class="token comment"># randomized algorithms.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note: with any of the above policies, when there are no suitable keys for</span>
+<span class="token comment"># eviction, Redis will return an error on write operations that require</span>
+<span class="token comment"># more memory. These are usually commands that create new keys, add data or</span>
+<span class="token comment"># modify existing keys. A few examples are: SET, INCR, HSET, LPUSH, SUNIONSTORE,</span>
+<span class="token comment"># SORT (due to the STORE argument), and EXEC (if the transaction includes any</span>
+<span class="token comment"># command that requires memory).</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default is:</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-policy noeviction</span>
+</code></pre></div><h3 id="maxmemory-samples"><a href="#maxmemory-samples" class="header-anchor">#</a> maxmemory-samples</h3> <p>设置样本数量，LRU算法和最小TTL算法都并非是精确的算法，而是估算值，所以可以设置样本的大小，redis默认会检查这么多个key并选择其中LRU的那个。</p> <p>一般设置3到7的数字，数值越小样本越不准确，但性能消耗越小。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># LRU, LFU and minimal TTL algorithms are not precise algorithms but approximated</span>
+<span class="token comment"># algorithms (in order to save memory), so you can tune it for speed or</span>
+<span class="token comment"># accuracy. By default Redis will check five keys and pick the one that was</span>
+<span class="token comment"># used least recently, you can change the sample size using the following</span>
+<span class="token comment"># configuration directive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default of 5 produces good enough results. 10 Approximates very closely</span>
+<span class="token comment"># true LRU but costs more CPU. 3 is faster but not very accurate.</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-samples 5</span>
+</code></pre></div></div></div> <!----> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=Redis" title="标签">#Redis</a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/11/30, 16:24:57</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/0oaka83c/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Redis常用命令&amp;数据类型</div></a> <a href="/pages/3a16c7g6/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Redis发布和订阅</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/0oaka83c/" class="prev">Redis常用命令&amp;数据类型</a></span> <span class="next"><a href="/pages/3a16c7g6/">Redis发布和订阅</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/jsf92i5m/"><div>
+            SpringBoot整合Redis
+            <!----></div></a> <span class="date">12-21</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/a7v81744/"><div>
+            Redis Java客户端Jedis
+            <!----></div></a> <span class="date">12-20</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/lp31htbk/"><div>
+            MacOS安装Git
+            <!----></div></a> <span class="date">12-19</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>| <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">浙ICP备2022027766号-1</a><br><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33011002016801" target="_blank">浙公网安备 33011002016801号</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ce0d757e.js" defer></script><script src="/assets/js/2.06b51e28.js" defer></script><script src="/assets/js/11.0710d907.js" defer></script>
+  </body>
+</html>
